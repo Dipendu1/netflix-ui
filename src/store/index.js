@@ -8,7 +8,7 @@ import { API_KEY, TMDB_BASE_URL } from "../utils/constants";
 
 const initialState = {
   movies: [],
-  genresLoaded: true,
+  genresLoaded: false,
   genres: [],
 };
 
@@ -16,7 +16,7 @@ export const getGenres = createAsyncThunk("netflix/genres", async () => {
   const {
     data: { genres },
   } = await axios.get(
-    "https://api.themoviedb.org/3/genre/movie/list?api_key=ccd6143982e03012ee45e189030bf2f4"
+    "https://api.themoviedb.org/3/genre/movie/list?api_key=b729145742448416ded264365147de2a`"
   );
   return genres;
 });
@@ -56,7 +56,7 @@ export const fetchDataByGenre = createAsyncThunk(
       netflix: { genres },
     } = thunkAPI.getState();
     return getRawData(
-      `https://api.themoviedb.org/3/discover/${type}?api_key=3ccd6143982e03012ee45e189030bf2f4&with_genres=${genre}`,
+      `https://api.themoviedb.org/3/discover/${type}?api_key=b729145742448416ded264365147de2a&with_genres=${genre}`,
       genres
     );
   }
